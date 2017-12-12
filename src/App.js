@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import {
-  BrowserRouter as Router,
   Route,
   Link,
   Redirect,
@@ -29,21 +28,31 @@ findStudent = (id) => {
   })
 }
 
+handleDelete = (id) => {
+  this.setState({
+    students: this.state.students.filter((student) => {
+      return student.id !== id
+    })
+  })
+}
+
   render() {
     return (
-      <Router>
         <div className="App">
           <Switch>
             <Route exact path="/" component={
-              () => <StudentList students={ this.state.students } />
+              () => <StudentList
+                      handleDelete={ this.handleDelete }
+                      students={ this.state.students }
+                    />
             } />
-            <Route path="/students/:id" component={
-              ({match}) => <ListItem { ...this.findStudent(match.params.id) } />
+            <Route path="/students/:id"
+                   component={ ({match}) => <ListItem { ...this.findStudent(match.params.id) }
+                                            />
             } />
             <Route component={ NoMatch } />
           </Switch>
         </div>
-      </Router>
     );
   }
 }
