@@ -7,7 +7,7 @@ const StudentList = ({ students }) => (
       students.map(student => { return  <ListItem key={ student.id } { ...student } /> })
     }
   </div>
-)
 
+)
 
 export default StudentList;

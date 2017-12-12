@@ -38,8 +38,7 @@ findStudent = (id) => {
               () => <StudentList students={ this.state.students } />
             } />
             <Route path="/students/:id" component={
-              ({match}) => <Test student={ this.findStudent(match.params.id)
-            } />
+              ({match}) => <ListItem { ...this.findStudent(match.params.id) } />
             } />
             <Route component={ NoMatch } />
           </Switch>
@@ -47,12 +46,6 @@ findStudent = (id) => {
       </Router>
     );
   }
-}
-
-const Test = ({ student }) => {
-  return (
-    <ListItem { ...student } />
-  )
 }
 
 export default App;

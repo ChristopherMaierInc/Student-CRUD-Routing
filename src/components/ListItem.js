@@ -6,6 +6,7 @@ const ListItem = ({ name, photo, bio, id }) => (
       <li><img className="avatar" src={ photo } alt={ bio }/></li>
       <li><strong>{ name }</strong></li>
       <li>{ bio }</li>
+      <li><button>Delete</button></li>
     </ul>
   </div>
 )
