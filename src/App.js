@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom'
 import StudentList from './components/StudentList'
 import NoMatch from './components/NoMatch'
+import ListItem from './components/ListItem'
 
 class App extends Component {
 
@@ -22,6 +23,12 @@ state = {
   ]
 }
 
+findStudent = (id) => {
+  return this.state.students.find((student) => {
+    return student.id === parseInt(id, 10)
+  })
+}
+
   render() {
     return (
       <Router>
@@ -29,13 +36,23 @@ state = {
           <Switch>
             <Route exact path="/" component={
               () => <StudentList students={ this.state.students } />
-            }/>
-            <Route component={NoMatch}/>
+            } />
+            <Route path="/students/:id" component={
+              ({match}) => <Test student={ this.findStudent(match.params.id)
+            } />
+            } />
+            <Route component={ NoMatch } />
           </Switch>
         </div>
       </Router>
     );
   }
+}
+
+const Test = ({ student }) => {
+  return (
+    <ListItem { ...student } />
+  )
 }
 
 export default App;

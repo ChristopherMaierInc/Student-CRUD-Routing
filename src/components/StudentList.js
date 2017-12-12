@@ -4,7 +4,7 @@ import ListItem from './ListItem'
 const StudentList = ({ students }) => (
   <div>
     {
-      students.map(student => { return  <ListItem { ...student } /> })
+      students.map(student => { return  <ListItem key={ student.id } { ...student } /> })
     }
   </div>
 )

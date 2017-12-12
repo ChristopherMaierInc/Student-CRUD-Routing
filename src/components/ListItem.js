@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ListItem = ({ name, photo, bio }) => (
+const ListItem = ({ name, photo, bio, id }) => (
   <div>
     <ul>
       <li><img className="avatar" src={ photo } alt={ bio }/></li>
