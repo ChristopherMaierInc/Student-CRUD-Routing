@@ -30,3 +30,8 @@
 li {
   list-style: none;
 }
+
+.avatar {
+  border-radius: 50%;
+  text-shadow: 1 1 1 1
+}

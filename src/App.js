@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter,
+  Switch
+} from 'react-router-dom'
 import StudentList from './components/StudentList'
+import NoMatch from './components/NoMatch'
 
 class App extends Component {
 
@@ -15,9 +24,16 @@ state = {
 
   render() {
     return (
-      <div className="App">
-        <StudentList students={ this.state.students } />
-      </div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={
+              () => <StudentList students={ this.state.students } />
+            }/>
+            <Route component={NoMatch}/>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
